@@ -109,6 +109,7 @@ The output is a list of complete image information as per EXIF standard.
    "flash_used" : 0
 }
 ```
+The values are purposefully emptied/zeroed to protect sensitive information.
 
 ### Acknowledgements :
 1. [EasyEXIF](https://github.com/mayanklahiri/easyexif)
