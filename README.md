@@ -111,6 +111,6 @@ The output is a list of complete image information as per EXIF standard.
 ```
 
 ### Acknowledgements :
-[EasyEXIF](https://github.com/mayanklahiri/easyexif)
-[cpp-httplib](https://github.com/yhirose/cpp-httplib)
-[json](https://github.com/nlohmann/json)
+1. [EasyEXIF](https://github.com/mayanklahiri/easyexif)
+2. [cpp-httplib](https://github.com/yhirose/cpp-httplib)
+3. [json](https://github.com/nlohmann/json)
