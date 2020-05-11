@@ -1,0 +1,3 @@
+#!/bin/ash
+
+./build/server
