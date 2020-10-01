@@ -31,7 +31,10 @@ int main(int argc, char **argv) {
         exit(0);
     }
 
-    free(imageBuffer);
+    if(imageBuffer) {
+        memset(imageBuffer, 0, sizeof(*imageBuffer));
+        free(imageBuffer);
+    }
 
     exif_to_print(result);
     //delete &result;

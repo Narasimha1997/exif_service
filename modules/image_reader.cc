@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <image_reader.h>
 
 unsigned char * create_jpeg_buffer(unsigned long size) {
     unsigned char * buffer = (unsigned char *)malloc(size);
     return buffer;
 }
-
-#include <image_reader.h>
 
 unsigned char * read_jpeg_data_fs(char * path, unsigned long * size) {
     FILE * jpegFp = fopen(path, "rb");
@@ -24,8 +23,6 @@ unsigned char * read_jpeg_data_fs(char * path, unsigned long * size) {
         printf("Can't read file.\n");
         exit(0);
     }
-
     fclose(jpegFp);
-
     return buffer;
 }
