@@ -27,6 +27,11 @@ void create_server_object() {
 
         easyexif::EXIFInfo result = get_exif_data(buffer, &size, &r_code);
 
+        if(buffer) {
+            memset(buffer, 0, sizeof(*buffer));
+            free(buffer);
+        }
+
         if(r_code) {
             res.set_content("Image file cant be read, upload valid JPEG, or no exif data found", "text/plain");
         }

@@ -1,6 +1,6 @@
 native:
 	@mkdir -p build/
-	@g++  modules/*.cc native-tool.cc  -Iincludes/ -o build/exif-tool -lpthread
+	@g++  modules/*.cc native-tool.cc  -Iincludes/ -o build/exif-tool -std=c++14 -lpthread
 
 web:
 	@mkdir -p build/
