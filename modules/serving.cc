@@ -58,11 +58,21 @@ void create_server_object(JsonLogger *logging)
             return;
         }
 
+        if(r_code) {
+            res.set_content("Image file cant be read, upload valid JPEG, or no exif data found", "text/plain");
+        }
+
         //exif_to_print(result);
         logging->logInfo("Successfully processed request");
 
         std::string jsonData = exif_to_json(result);
         res.set_content(jsonData.c_str(), "application/json");
+
+        if(buffer) {
+            memset(buffer, 0, sizeof(*buffer));
+            free(buffer);
+        }
+
     });
 
     server.Get("/health", [&](const auto& req, auto& res) {

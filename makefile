@@ -4,4 +4,4 @@ native:
 
 web:
 	@mkdir -p build/
-	@g++  modules/*.cc web.cc  -std=c++11 -Iincludes/ -o webo -std=c++14 -lpthread -o build/server
+	@g++  modules/*.cc web.cc -std=c++11 -Iincludes/ -o webo -std=c++14 -lpthread -o build/server

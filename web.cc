@@ -7,7 +7,7 @@ int main(int argc, char **argv) {
         const char *logging_path = argv[1];
         logger = new JsonLogger(logging_path);
     } else {
-        logger = new JsonLogger("logs.json");
+        logger = new JsonLogger(NULL);
     }
 
     create_server_object(logger);
