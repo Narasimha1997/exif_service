@@ -1,0 +1,53 @@
+{
+    "35m_focal_length": 25,
+    "bits_per_sample": 0,
+    "camera_make": "Xiaomi",
+    "camera_model": "Redmi Note 7 Pro",
+    "exposure_program": 2,
+    "exposure_time": 33,
+    "expousre_bias": 0.0,
+    "f_stop": 1.79,
+    "flash_mode": 2,
+    "flash_returned_light": 0,
+    "flash_used": 0,
+    "focal_plane_xres": 0.0,
+    "focal_plane_yres": 0.0,
+    "gps_alatitude": 0.0,
+    "gps_precision": 0.0,
+    "image_copyright": "",
+    "image_date_time": "2020:05:10 20:29:17",
+    "image_description": "",
+    "image_digitized_date_time": "2020:05:10 20:29:17",
+    "image_height": 3000,
+    "image_orientation": 6,
+    "image_original_date_time": "2020:05:10 20:29:17",
+    "image_width": 4000,
+    "iso_speed": 210,
+    "lens_f_stop_max": 0.0,
+    "lens_f_stop_min": 0.0,
+    "lens_focal_length": 4.68,
+    "lens_make": "",
+    "lens_max_focal_length": 0.0,
+    "lens_min_focal_length": 0.0,
+    "lens_model": "",
+    "location": {
+        "lat": {
+            "degree": 12.0,
+            "direction": 78,
+            "lat": 12.948646972222223,
+            "minutes": 56.0,
+            "seconds": 55.1291
+        },
+        "lon": {
+            "degree": 77.0,
+            "direction": 69,
+            "lon": 77.551061,
+            "minutes": 33.0,
+            "seconds": 3.8196
+        }
+    },
+    "metering_mode": 4.68,
+    "software": "",
+    "subject_distance": 0.0,
+    "subsecond_time": "522008"
+}

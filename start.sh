@@ -1,3 +1,3 @@
 #!/bin/ash
 
-./build/server
+./build/server $1

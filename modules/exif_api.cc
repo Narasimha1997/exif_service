@@ -1,81 +1,83 @@
-#include<stdlib.h>
-#include<stdio.h>
 #include <exif.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-#include <iostream>
 #include <exif_api.h>
+#include <iostream>
 
 #include <json.hpp>
-
 
 using json = nlohmann::json;
 using namespace easyexif;
 
-easyexif::EXIFInfo get_exif_data(unsigned char * jpegBuffer, unsigned long * size, int *r_code) {
-    if(* size <= 0  || !jpegBuffer) {
+easyexif::EXIFInfo get_exif_data(unsigned char* jpegBuffer, unsigned long* size, int* r_code)
+{
+    if (*size <= 0 || !jpegBuffer) {
         printf("invalid data supplied");
         exit(0);
     }
 
     easyexif::EXIFInfo result;
     int code = result.parseFrom(jpegBuffer, *size);
-    *r_code = code; 
-    if(code) {
+    *r_code = code;
+    if (code) {
         printf("EXIF data cant be read!");
     }
     return result;
 }
 
-void exif_to_print(easyexif::EXIFInfo result) {
-  printf("Camera make          : %s\n", result.Make.c_str());
-  printf("Camera model         : %s\n", result.Model.c_str());
-  printf("Software             : %s\n", result.Software.c_str());
-  printf("Bits per sample      : %d\n", result.BitsPerSample);
-  printf("Image width          : %d\n", result.ImageWidth);
-  printf("Image height         : %d\n", result.ImageHeight);
-  printf("Image description    : %s\n", result.ImageDescription.c_str());
-  printf("Image orientation    : %d\n", result.Orientation);
-  printf("Image copyright      : %s\n", result.Copyright.c_str());
-  printf("Image date/time      : %s\n", result.DateTime.c_str());
-  printf("Original date/time   : %s\n", result.DateTimeOriginal.c_str());
-  printf("Digitize date/time   : %s\n", result.DateTimeDigitized.c_str());
-  printf("Subsecond time       : %s\n", result.SubSecTimeOriginal.c_str());
-  printf("Exposure time        : 1/%d s\n",
-         (unsigned)(1.0 / result.ExposureTime));
-  printf("F-stop               : f/%.1f\n", result.FNumber);
-  printf("Exposure program     : %d\n", result.ExposureProgram);
-  printf("ISO speed            : %d\n", result.ISOSpeedRatings);
-  printf("Subject distance     : %f m\n", result.SubjectDistance);
-  printf("Exposure bias        : %f EV\n", result.ExposureBiasValue);
-  printf("Flash used?          : %d\n", result.Flash);
-  printf("Flash returned light : %d\n", result.FlashReturnedLight);
-  printf("Flash mode           : %d\n", result.FlashMode);
-  printf("Metering mode        : %d\n", result.MeteringMode);
-  printf("Lens focal length    : %f mm\n", result.FocalLength);
-  printf("35mm focal length    : %u mm\n", result.FocalLengthIn35mm);
-  printf("GPS Latitude         : %f deg (%f deg, %f min, %f sec %c)\n",
-         result.GeoLocation.Latitude, result.GeoLocation.LatComponents.degrees,
-         result.GeoLocation.LatComponents.minutes,
-         result.GeoLocation.LatComponents.seconds,
-         result.GeoLocation.LatComponents.direction);
-  printf("GPS Longitude        : %f deg (%f deg, %f min, %f sec %c)\n",
-         result.GeoLocation.Longitude, result.GeoLocation.LonComponents.degrees,
-         result.GeoLocation.LonComponents.minutes,
-         result.GeoLocation.LonComponents.seconds,
-         result.GeoLocation.LonComponents.direction);
-  printf("GPS Altitude         : %f m\n", result.GeoLocation.Altitude);
-  printf("GPS Precision (DOP)  : %f\n", result.GeoLocation.DOP);
-  printf("Lens min focal length: %f mm\n", result.LensInfo.FocalLengthMin);
-  printf("Lens max focal length: %f mm\n", result.LensInfo.FocalLengthMax);
-  printf("Lens f-stop min      : f/%.1f\n", result.LensInfo.FStopMin);
-  printf("Lens f-stop max      : f/%.1f\n", result.LensInfo.FStopMax);
-  printf("Lens make            : %s\n", result.LensInfo.Make.c_str());
-  printf("Lens model           : %s\n", result.LensInfo.Model.c_str());
-  printf("Focal plane XRes     : %f\n", result.LensInfo.FocalPlaneXResolution);
-  printf("Focal plane YRes     : %f\n", result.LensInfo.FocalPlaneYResolution);
+void exif_to_print(easyexif::EXIFInfo result)
+{
+    printf("Camera make          : %s\n", result.Make.c_str());
+    printf("Camera model         : %s\n", result.Model.c_str());
+    printf("Software             : %s\n", result.Software.c_str());
+    printf("Bits per sample      : %d\n", result.BitsPerSample);
+    printf("Image width          : %d\n", result.ImageWidth);
+    printf("Image height         : %d\n", result.ImageHeight);
+    printf("Image description    : %s\n", result.ImageDescription.c_str());
+    printf("Image orientation    : %d\n", result.Orientation);
+    printf("Image copyright      : %s\n", result.Copyright.c_str());
+    printf("Image date/time      : %s\n", result.DateTime.c_str());
+    printf("Original date/time   : %s\n", result.DateTimeOriginal.c_str());
+    printf("Digitize date/time   : %s\n", result.DateTimeDigitized.c_str());
+    printf("Subsecond time       : %s\n", result.SubSecTimeOriginal.c_str());
+    printf("Exposure time        : 1/%d s\n",
+        (unsigned)(1.0 / result.ExposureTime));
+    printf("F-stop               : f/%.1f\n", result.FNumber);
+    printf("Exposure program     : %d\n", result.ExposureProgram);
+    printf("ISO speed            : %d\n", result.ISOSpeedRatings);
+    printf("Subject distance     : %f m\n", result.SubjectDistance);
+    printf("Exposure bias        : %f EV\n", result.ExposureBiasValue);
+    printf("Flash used?          : %d\n", result.Flash);
+    printf("Flash returned light : %d\n", result.FlashReturnedLight);
+    printf("Flash mode           : %d\n", result.FlashMode);
+    printf("Metering mode        : %d\n", result.MeteringMode);
+    printf("Lens focal length    : %f mm\n", result.FocalLength);
+    printf("35mm focal length    : %u mm\n", result.FocalLengthIn35mm);
+    printf("GPS Latitude         : %f deg (%f deg, %f min, %f sec %c)\n",
+        result.GeoLocation.Latitude, result.GeoLocation.LatComponents.degrees,
+        result.GeoLocation.LatComponents.minutes,
+        result.GeoLocation.LatComponents.seconds,
+        result.GeoLocation.LatComponents.direction);
+    printf("GPS Longitude        : %f deg (%f deg, %f min, %f sec %c)\n",
+        result.GeoLocation.Longitude, result.GeoLocation.LonComponents.degrees,
+        result.GeoLocation.LonComponents.minutes,
+        result.GeoLocation.LonComponents.seconds,
+        result.GeoLocation.LonComponents.direction);
+    printf("GPS Altitude         : %f m\n", result.GeoLocation.Altitude);
+    printf("GPS Precision (DOP)  : %f\n", result.GeoLocation.DOP);
+    printf("Lens min focal length: %f mm\n", result.LensInfo.FocalLengthMin);
+    printf("Lens max focal length: %f mm\n", result.LensInfo.FocalLengthMax);
+    printf("Lens f-stop min      : f/%.1f\n", result.LensInfo.FStopMin);
+    printf("Lens f-stop max      : f/%.1f\n", result.LensInfo.FStopMax);
+    printf("Lens make            : %s\n", result.LensInfo.Make.c_str());
+    printf("Lens model           : %s\n", result.LensInfo.Model.c_str());
+    printf("Focal plane XRes     : %f\n", result.LensInfo.FocalPlaneXResolution);
+    printf("Focal plane YRes     : %f\n", result.LensInfo.FocalPlaneYResolution);
 }
 
-std::string exif_to_json(easyexif::EXIFInfo result) {
+std::string exif_to_json(easyexif::EXIFInfo result)
+{
     json json_d;
 
     json_d["camera_make"] = result.Make.c_str();
@@ -92,17 +94,17 @@ std::string exif_to_json(easyexif::EXIFInfo result) {
     json_d["image_digitized_date_time"] = result.DateTimeDigitized.c_str();
     json_d["subsecond_time"] = result.SubSecTimeOriginal.c_str();
     json_d["exposure_time"] = (unsigned)(1.0 / result.ExposureTime);
-    json_d["f_stop"] =result.FNumber;
-    json_d["exposure_program"]=result.ExposureProgram;
+    json_d["f_stop"] = result.FNumber;
+    json_d["exposure_program"] = result.ExposureProgram;
     json_d["iso_speed"] = result.ISOSpeedRatings;
     json_d["subject_distance"] = result.SubjectDistance;
     json_d["expousre_bias"] = result.ExposureBiasValue;
     json_d["flash_used"] = result.Flash;
-    json_d["flash_returned_light"]=result.FlashReturnedLight;
+    json_d["flash_returned_light"] = result.FlashReturnedLight;
 
-    json_d["flash_mode"]=result.MeteringMode;
-    json_d["metering_mode"]=result.FocalLength;
-    json_d["lens_focal_length"] =result.FocalLength;
+    json_d["flash_mode"] = result.MeteringMode;
+    json_d["metering_mode"] = result.FocalLength;
+    json_d["lens_focal_length"] = result.FocalLength;
     json_d["35m_focal_length"] = result.FocalLengthIn35mm;
     json_d["gps_alatitude"] = result.GeoLocation.Altitude;
     json_d["gps_precision"] = result.GeoLocation.DOP;

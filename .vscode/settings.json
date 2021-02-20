@@ -57,6 +57,7 @@
         "thread": "cpp",
         "typeinfo": "cpp",
         "forward_list": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "cinttypes": "cpp"
     }
 }
